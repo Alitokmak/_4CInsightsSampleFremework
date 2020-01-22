@@ -11,8 +11,8 @@ public class Login {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath="//a[@target='_blank'][@xpath='2']")
-    public WebElement login;
+    @FindBy(xpath="//div/li/a")
+    public WebElement loginBox;
 
     @FindBy(id ="email")
     public WebElement username;
@@ -34,12 +34,15 @@ public class Login {
 
 
     public void login(String user, String pass){
+        //loginBox.click();
+        username.clear();
         username.sendKeys(user);
+        username.clear();
         password.sendKeys(pass);
         loginButton.click();
     }
 
-    public void open(){
+    public void openUrl(){
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
     }
 
